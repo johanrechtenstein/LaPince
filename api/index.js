@@ -9,7 +9,7 @@ import cookieParser from "cookie-parser";
 const app = express();
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'http://192.168.1.36:3000'], // Remplacez par l'origine de votre application
+  origin: ['http://localhost:3000', 'http://192.168.1.36:3000', 'https://la-pince-iota.vercel.app'], // Remplacez par l'origine de votre application
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
