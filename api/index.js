@@ -39,6 +39,22 @@ app.use("/api", router);
 
 
 const port = process.env.PORT || 3001;
+
+// 👇 Fonction de démarrage avec vérification de connexion
+async function startServer() {
+  try {
+    // Vérifier la connexion à la base
+    await sequelize.authenticate();
+    console.log('✅ Connexion à la base de données réussie');
+
+  
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
+} catch (error) {
+  console.error('❌ Erreur de connexion à la base:', error);
+  process.exit(1);
+}
+}
+
+startServer();
