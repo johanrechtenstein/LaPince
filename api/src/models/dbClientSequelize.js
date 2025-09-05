@@ -1,18 +1,24 @@
 import "dotenv/config";
-
-// CommonJS (import)
-// const { Sequelize } = require('sequelize');
-
-// ECMAScript modules (import)
 import { Sequelize } from "sequelize";
 
-// ECMAScript modules (export)
-// Instance de connexion à la base de données Postgres
-export const sequelize = new Sequelize(process.env.PG_URL, {
-  define: {
-    createdAt: "created_at",
-    updatedAt: "updated_at",
-    // underscored: true
-  },
-  // logging: false // Pour désactiver l'affichage en console des requêtes SQL que Sequelize passe vers la BDD
+// Utilise DATABASE_URL (standard) ou PG_URL (votre variable locale)
+const databaseUrl = process.env.DATABASE_URL || process.env.PG_URL;
+
+if (!databaseUrl) {
+    throw new Error('Aucune URL de base de données trouvée ! Définissez DATABASE_URL ou PG_URL');
+}
+
+export const sequelize = new Sequelize(databaseUrl, {
+    define: {
+        createdAt: "created_at",
+        updatedAt: "updated_at",
+    },
+    // Configuration SSL pour la production
+    dialectOptions: {
+        ssl: process.env.NODE_ENV === 'production' ? {
+            require: true,
+            rejectUnauthorized: false
+        } : false
+    },
+    // logging: false
 });
