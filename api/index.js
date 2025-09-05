@@ -21,6 +21,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(xss());
 
+// 👇 Route temporaire pour créer les tables
+app.get('/api/init-db', async (req, res) => {
+  try {
+    console.log('🔧 Initialisation des tables...');
+    const sqlFile = fs.readFileSync('./create_table.sql', 'utf8');
+    await sequelize.query(sqlFile);
+    console.log('✅ Tables créées avec succès !');
+    res.json({ message: 'Base de données initialisée avec succès !' });
+  } catch (error) {
+    console.error('❌ Erreur init DB:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 app.use("/api", router);
 
 
