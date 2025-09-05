@@ -1,0 +1,38 @@
+### Get all details accounts
+GET http://localhost:3001/api/detailaccount
+
+### Get a specific detail account
+GET http://localhost:3001/api/detailaccount/1
+
+### Create a new detail account
+POST http://localhost:3001/api/detailaccount
+Content-Type: application/json
+
+{
+    "date":"2025-02-23",
+    "amount":"1540",
+    "title":"b",
+    "type":"c",
+    "account_id":"1"
+}
+
+### Update a specific detail account
+PATCH http://localhost:3001/api/detailaccount/3
+Content-Type: application/json
+
+{
+  "date":"2025-07-21",
+  "amount":"100.00",
+  "title":"coiffeur",
+  "type":"cb",
+  "account_id":"2"
+}
+
+### Delete a specific account
+DELETE http://localhost:3000/api/detailaccount/4
+
+
+### Get all user's account
+get http://localhost:3001/api/user/1/account/1/detailaccount
+
+

@@ -1,0 +1,33 @@
+### Get all accounts
+GET http://localhost:3001/api/account
+
+### Get a specific account
+GET http://localhost:3001/api/account/1
+
+
+### Create a new account
+POST http://localhost:3000/api/account
+Content-Type: application/json
+
+{
+  "title": "papigato",
+  "user_id": "1"
+}
+
+### Update a specific account
+PATCH http://localhost:3000/api/account/2
+Content-Type: application/json
+
+{
+  "title": "John Doe Updated",
+  "user_id": "2"
+}
+
+### Delete a specific account
+DELETE http://localhost:3000/api/account/5
+
+
+### Get all user's account
+get http://localhost:3001/api/user/2/account
+
+

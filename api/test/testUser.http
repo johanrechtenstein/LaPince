@@ -1,0 +1,41 @@
+####login
+
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+   "pseudo": "admin",
+   "password": "admin" 
+}
+
+
+### Get all users
+GET http://localhost:3001/api/user
+
+### Get a specific user
+GET http://localhost:3001/api/user/2
+
+### Create a new user
+POST http://localhost:3001/api/user
+Content-Type: application/json
+
+{
+  "pseudo": "mamigato",
+  "email": "john@example.com",
+  "password": "bonbon1",
+  "role": "role"
+
+}
+
+### Update a specific user
+PATCH http://localhost:3001/api/user/1
+Content-Type: application/json
+
+{
+  "name": "John Doe Updated",
+  "email": "john.doe.updated@example.com",
+  "password": "bonbonUpdated"
+}
+
+### Delete a specific user
+DELETE http://localhost:3000/api/user/1

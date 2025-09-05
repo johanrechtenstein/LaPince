@@ -1,0 +1,28 @@
+### Get all tags
+GET http://localhost:3000/api/tag
+
+### Get a specific tag
+GET http://localhost:3000/api/tag/1
+
+### Create a new tag
+POST http://localhost:3000/api/tag
+Content-Type: application/json
+
+{
+  "title": "blablacacacar",
+  "detail_account_id":null,
+  "detail_budget_id": "1"
+}
+
+### Update a specific tag
+PATCH http://localhost:3000/api/tag/2
+Content-Type: application/json
+
+{
+  "title": "blablabl",
+  "detail_account_id": "1",
+  "detail_budget_id": "null"
+}
+
+### Delete a specific user
+DELETE http://localhost:3000/api/tag/24

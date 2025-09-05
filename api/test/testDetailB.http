@@ -1,0 +1,36 @@
+### Get all details budgets
+GET http://localhost:3001/api/detailbudget
+
+### Get a specific detail budget
+GET http://localhost:3001/api/detailbudget/4
+
+### Create a new detail budget
+POST http://localhost:3001/api/detailbudget
+Content-Type: application/json
+
+{
+    "amount":"150",
+    "title":"bibi",
+    "date":"2025-07",
+    "budget_id":"3"
+}
+
+### Update a specific detail budget
+PATCH http://localhost:3001/api/detailbudget/6
+Content-Type: application/json
+
+{
+  "amount":"150",
+  "title":"coiffeur",
+  "date":"2025-07",
+  "budget_id":"2"
+}
+
+### Delete a specific budget
+DELETE http://localhost:3000/api/detailbudget/5
+
+
+### Get all user's budget
+get http://localhost:3001/api/user/3/budget/2/detailbudget
+
+

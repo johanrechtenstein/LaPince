@@ -1,0 +1,36 @@
+### Get all budgets
+GET http://localhost:3001/api/budget
+
+### Get a specific budget
+GET http://localhost:3000/api/budget/2
+
+### Create a new budget
+POST http://localhost:3000/api/budget
+Content-Type: application/json
+
+{
+  "title": "mamigato",
+  "user_id": "2",
+  "limit":"200",
+  "date":"2025-07",
+  "account_id": "2"
+}
+
+### Update a specific budget
+PUT http://localhost:3001/api/budget/13
+Content-Type: application/json
+
+{
+  "title": "John Doe Updated",
+  "user_id": "2",
+  "limit":"100",
+  "date":"2025-07",
+  "account_id": "10"
+}
+
+### Delete a specific budget
+DELETE http://localhost:3000/api/budget/5
+
+
+### Get all user's budget
+get http://localhost:3000/api/user/2/budget
