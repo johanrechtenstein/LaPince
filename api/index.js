@@ -4,7 +4,9 @@ import cors from "cors";
 import { router } from "./src/router.js";
 import { xss } from "express-xss-sanitizer";
 import cookieParser from "cookie-parser";
-// import session from "express-session";
+import { sequelize } from "./src/models/dbClientSequelize.js";
+import fs from 'fs';
+
 
 const app = express();
 
