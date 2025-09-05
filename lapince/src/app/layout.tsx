@@ -13,7 +13,7 @@ function HeaderContent() {
 
   // Timer pour fermer le menu automatiquement après 10 secondes
   useEffect(() => {
-    let timer;
+    let timer: NodeJS.Timeout | undefined;
     
     if (isOpen) {
       timer = setTimeout(() => {

@@ -4,6 +4,7 @@ import { useAuth } from "@/contexts/Authcontext";
 import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import IDetailBudget from "@/@types/detail-budget";
+import { API_BASE_URL } from "@/config/api";
 
 
 export default function detailBudget() {
@@ -54,7 +55,7 @@ export default function detailBudget() {
     setDBudgetsError(null);
 
     try {
-      const url = `http://localhost:3001/api/budget/${budget.id}`;
+      const url = `${API_BASE_URL}/api/budget/${budget.id}`;
       const response = await axios.get(url, {
         withCredentials: true,
       });
@@ -88,7 +89,7 @@ export default function detailBudget() {
     setDeleteError(null);
 
     try {
-      const url = `http://localhost:3001/api/detailbudget/${detailBudgetId}`;
+      const url = `${API_BASE_URL}/api/detailbudget/${detailBudgetId}`;
       await axios.delete(url, {
         withCredentials: true,
       });
@@ -168,7 +169,7 @@ const createDetailBudget = async () => {
       return;
     }
 
-    const url = `http://localhost:3001/api/detailbudget`;
+    const url = `${API_BASE_URL}/api/detailbudget`;
     const payload = {
       amount: parsedAmount,
       title: newDetailBudgetTitle.trim().substring(0, 255),
@@ -310,8 +311,7 @@ const openEditModal = (detailBudget: IDetailBudget) => {
       }
 
 
-      const url = `http://localhost:3001/api/detailbudget/${detailBudgetId}`;
-      console.log('🌐 URL de modification:', url);
+      const url = `${API_BASE_URL}/api/detailbudget/${detailBudgetId}`;
       const payload = {
         amount: parsedAmount,
         title: editDetailBudgetTitle.trim().substring(0, 255),
@@ -319,13 +319,9 @@ const openEditModal = (detailBudget: IDetailBudget) => {
         budget_id: budgetId
       };
 
-      console.log('📤 Données de modification envoyées:', payload);
-
       const response = await axios.put(url, payload, {
         withCredentials: true,
       });
-      
-      console.log('✅ Réponse serveur (modification):', response.data);
       
       await fetchUserDBudgets();
       closeEditModal();
@@ -333,12 +329,6 @@ const openEditModal = (detailBudget: IDetailBudget) => {
       console.error('❌ Erreur lors de la modification:', error);
       
       if (axios.isAxiosError(error)) {
-        console.log('🔍 Debug - Status:', error.response?.status);
-        console.log('🔍 Debug - URL appelée:', error.config?.url);
-        console.log('🔍 Debug - Méthode:', error.config?.method);
-        console.log('🔍 Debug - Data envoyée:', error.config?.data);
-        console.log('🔍 Debug - Response data:', error.response?.data);
-
         if (error.response?.status === 400) {
           setUpdateError('Données invalides. Vérifiez vos saisies.');
         } else if (error.response?.status === 404) {

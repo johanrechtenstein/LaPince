@@ -7,6 +7,7 @@ import { useState } from "react";
 import type { ReactNode } from "react";
 import axios from "axios";
 import type IUser from "@/@types/user";
+import { API_BASE_URL } from "@/config/api";
 
 
 type AuthContextType = {
@@ -34,7 +35,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.get("http://localhost:3001/api/auth/me", {
+      const res = await axios.get(`${API_BASE_URL}/api/auth/me`, {
         withCredentials: true,
       });
     
@@ -60,7 +61,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setLoading(false);
     }
   };
-    
+  
   useEffect(() => {
     fetchUser();
   }, []);
@@ -71,7 +72,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const logout = async () => {
     try {
-      await axios.post("http://localhost:3001/api/auth/logout", {}, {
+      await axios.post(`${API_BASE_URL}/api/auth/logout`, {}, {
         withCredentials: true,
       });
       await fetchUser();

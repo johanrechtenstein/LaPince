@@ -6,6 +6,7 @@ import axios from "axios";
 import IDetailAccount from "@/@types/detail-account";
 import IBudget from "@/@types/budget";
 import BudgetList from "@/components/BudgetList";
+import { API_BASE_URL } from "@/config/api";
 
 
 
@@ -61,7 +62,7 @@ export default function detailAccount() {
    setDAccountsError(null);
 
    try {
-     const url = `http://localhost:3001/api/account/${account.id}`;
+     const url = `${API_BASE_URL}/api/account/${account.id}`;
      const response = await axios.get(url, { withCredentials: true });
      
      setDAccounts(response.data.detail_account || response.data);
@@ -94,7 +95,7 @@ export default function detailAccount() {
    setDeletingId(detailAccountId);
  
    try {
-     const url = `http://localhost:3001/api/detailaccount/${detailAccountId}`;
+     const url = `${API_BASE_URL}/api/detailaccount/${detailAccountId}`;
      await axios.delete(url, { withCredentials: true });
      
      await fetchUserDAccounts();
@@ -133,7 +134,7 @@ const fetchAccountBudgets = async (accountId: number) => {
   setBudgetsLoading(prev => ({...prev, [accountId]: true}));
     
   try {
-    const url = `http://localhost:3001/api/account/${accountId}/budget`;
+    const url = `${API_BASE_URL}/api/account/${accountId}/budget`;
     const response = await axios.get(url, {
       withCredentials: true,
     });
@@ -176,7 +177,7 @@ const fetchAccountBudgets = async (accountId: number) => {
        return;
      }
 
-     const url = `http://localhost:3001/api/detailaccount`;
+     const url = `${API_BASE_URL}/api/detailaccount`;
      const payload = {
        date: newDetailAccountDate,
        amount: parsedAmount,
@@ -282,7 +283,7 @@ const fetchAccountBudgets = async (accountId: number) => {
        return;
      }
 
-     const url = `http://localhost:3001/api/detailaccount/${detailAccountId}`;
+     const url = `${API_BASE_URL}/api/detailaccount/${detailAccountId}`;
      const payload = {
        date: editDetailAccountDate,
        amount: parsedAmount,
@@ -327,7 +328,7 @@ const fetchAccountBudgets = async (accountId: number) => {
     setDeleteError(null);
 
     try {
-      const url = `http://localhost:3001/api/budget/${budgetId}`;
+      const url = `${API_BASE_URL}/api/budget/${budgetId}`;
       await axios.delete(url, {
         withCredentials: true,
       });
@@ -357,7 +358,7 @@ const fetchAccountBudgets = async (accountId: number) => {
     //   const month = String(now.getMonth() + 1).padStart(2, '0'); // +1 car getMonth() retourne 0-11
     //   return `${year}-${month}`;
     // };
-      const url = `http://localhost:3001/api/budget`;
+      const url = `${API_BASE_URL}/api/budget`;
       await axios.post(url, {
         title: newBudgetTitle,
         user_id: Number(user.id),
@@ -491,7 +492,7 @@ const fetchAccountBudgets = async (accountId: number) => {
     }
 
 
-      const url = `http://localhost:3001/api/budget/${budgetId}`;
+      const url = `${API_BASE_URL}/api/budget/${budgetId}`;
       console.log('🌐 URL de modification:', url);
       const payload = {
         title: editBudgetTitle.trim().substring(0, 255),
@@ -519,12 +520,7 @@ const fetchAccountBudgets = async (accountId: number) => {
       
       
       if (axios.isAxiosError(error)) {
-        console.log('🔍 Debug - Status:', error.response?.status);
-        console.log('🔍 Debug - URL appelée:', error.config?.url);
-        console.log('🔍 Debug - Méthode:', error.config?.method);
-        console.log('🔍 Debug - Data envoyée:', error.config?.data);
-        console.log('🔍 Debug - Response data:', error.response?.data);
-
+     
         if (error.response?.status === 400) {
           setUpdateError('Données invalides. Vérifiez vos saisies.');
         } else if (error.response?.status === 404) {

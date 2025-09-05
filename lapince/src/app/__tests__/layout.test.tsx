@@ -1,8 +1,7 @@
-// app/__tests__/layout.test.tsx
-
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
 import type IUser from '@/@types/user';
+import { fireEvent, render, screen} from '@testing-library/react';
+import  React from 'react';
+
 
 // ============================================
 // 1. D'ABORD, ON MOCK (= ON REMPLACE) LES DÉPENDANCES

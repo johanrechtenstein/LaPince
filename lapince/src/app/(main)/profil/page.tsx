@@ -4,6 +4,7 @@ import { useAuth } from "@/contexts/Authcontext";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import IUser from "@/@types/user";
+import { API_BASE_URL } from "@/config/api";
 
 export default function ProfilPage() {
   const { user, loading, logout, fetchUser } = useAuth();
@@ -48,7 +49,7 @@ export default function ProfilPage() {
     setFieldErrors(prev => ({ ...prev, [field]: '' }));
     
     try {
-      const response = await axios.get(`http://localhost:3001/api/user/check?${field}=${encodeURIComponent(value)}`);
+      const response = await axios.get(`${API_BASE_URL}/api/user/check?${field}=${encodeURIComponent(value)}`);
       if (response.data.exists) {
         setFieldErrors(prev => ({
           ...prev,
@@ -122,7 +123,7 @@ export default function ProfilPage() {
 
     try {
       const userId = editingUser.id;
-      const url = `http://localhost:3001/api/user/${userId}`;    
+      const url = `${API_BASE_URL}/api/user/${userId}`;    
       const payload = {
         pseudo: editUserPseudo.trim().substring(0, 255),
         email: editUserMail.trim().substring(0, 255),
@@ -188,7 +189,7 @@ export default function ProfilPage() {
   
     try {
       const userId = user.id;
-      const url = `http://localhost:3001/api/user/${userId}`;
+      const url = `${API_BASE_URL}/api/user/${userId}`;
       await axios.delete(url, { withCredentials: true });
       logout();
       alert("Compte supprimé avec succès.");

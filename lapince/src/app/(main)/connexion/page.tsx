@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import axios,{isAxiosError} from 'axios';
 import { useAuth } from '@/contexts/Authcontext';
+import { API_BASE_URL } from '@/config/api';
 
 
 export default function Login() {
@@ -27,7 +28,7 @@ export default function Login() {
     }
 
     try {
-      const response = await axios.post("http://localhost:3001/api/auth/login",{
+      const response = await axios.post(`${API_BASE_URL}/api/auth/login`,{
         pseudo: pseudo,
         password: password},
         {withCredentials:true

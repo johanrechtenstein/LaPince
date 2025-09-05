@@ -5,7 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import Link from "next/link";
 import IAccount from "@/@types/account";
-import IBudget from "@/@types/budget";
+import { API_BASE_URL } from "@/config/api";
 
 export default function UserPage() {
   const { user, loading, fetchUser } = useAuth();
@@ -55,7 +55,7 @@ export default function UserPage() {
 
     try {
       const userId = user.id;
-      const url = `http://localhost:3001/api/user/${userId}/account`;
+      const url = `${API_BASE_URL}/api/user/${userId}/account`;
       const response = await axios.get(url, {
         withCredentials: true,
       });
@@ -94,7 +94,7 @@ export default function UserPage() {
     setDeleteError(null);
 
     try {
-      const url = `http://localhost:3001/api/account/${accountId}`;
+      const url = `${API_BASE_URL}/api/account/${accountId}`;
       await axios.delete(url, {
         withCredentials: true,
       });
@@ -116,7 +116,7 @@ export default function UserPage() {
     setSubmitError(null);
 
     try {
-      const url = `http://localhost:3001/api/account`;
+      const url = `${API_BASE_URL}/api/account`;
       await axios.post(url, {
         title: newAccountTitle,
         user_id: Number(user.id),
@@ -194,7 +194,7 @@ export default function UserPage() {
     }
 
 
-      const url = `http://localhost:3001/api/account/${accountId}`;
+      const url = `${API_BASE_URL}/api/account/${accountId}`;
       console.log('🌐 URL de modification:', url);
       const payload = {
         account_id: accountId,
@@ -220,12 +220,7 @@ export default function UserPage() {
       
       
       if (axios.isAxiosError(error)) {
-        console.log('🔍 Debug - Status:', error.response?.status);
-        console.log('🔍 Debug - URL appelée:', error.config?.url);
-        console.log('🔍 Debug - Méthode:', error.config?.method);
-        console.log('🔍 Debug - Data envoyée:', error.config?.data);
-        console.log('🔍 Debug - Response data:', error.response?.data);
-
+        
         if (error.response?.status === 400) {
           setUpdateError('Données invalides. Vérifiez vos saisies.');
         } else if (error.response?.status === 404) {
@@ -265,7 +260,6 @@ export default function UserPage() {
   // ========================================
   useEffect(() => {
     if (!user && !loading) {
-      console.log('🔄 Utilisateur non connecté, redirection vers la page de connexion');
       router.push("/connexion");
     }
   }, [user, loading, router]);

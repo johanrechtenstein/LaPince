@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import axios,{isAxiosError} from 'axios';
+import { API_BASE_URL } from '@/config/api';
 
 export default function Inscription() {
 const [formData, setFormData] = useState({
@@ -48,7 +49,7 @@ const checkFieldAvailability = async (field: 'email' | 'pseudo', value: string) 
   setFieldErrors(prev => ({ ...prev, [field]: '' }));
 
   try {
-    const response = await axios.get(`http://localhost:3001/api/user/check?${field}=${encodeURIComponent(value)}`);
+    const response = await axios.get(`${API_BASE_URL}/api/user/check?${field}=${encodeURIComponent(value)}`);
     
     if (response.data.exists) {
       setFieldErrors(prev => ({
@@ -116,7 +117,7 @@ const apiData = {
 
 try {
 // Requête POST avec axios
-const response = await axios.post('http://localhost:3001/api/user', apiData, {
+const response = await axios.post(`${API_BASE_URL}/api/user`, apiData, {
  headers: {
 'Content-Type': 'application/json',
  },
