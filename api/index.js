@@ -27,7 +27,7 @@ app.use(xss());
 app.get('/api/init-db', async (req, res) => {
   try {
     console.log('🔧 Initialisation des tables...');
-    const sqlFile = fs.readFileSync('./create_table.sql', 'utf8');
+    const sqlFile = fs.readFileSync('./create_tables.sql', 'utf8');
     await sequelize.query(sqlFile);
     console.log('✅ Tables créées avec succès !');
     res.json({ message: 'Base de données initialisée avec succès !' });
