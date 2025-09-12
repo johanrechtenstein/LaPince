@@ -17,10 +17,10 @@ const corsOptions = {
   credentials: true,
 };
 
-app.use(cookieParser());
-app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(cors(corsOptions));
 app.use(xss());
 
 // 👇 Route temporaire pour créer les tables
