@@ -1,3 +1,4 @@
+'use client'
 import { API_BASE_URL } from '@/config/api';
 
 export default function DebugAPI() {
