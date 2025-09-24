@@ -25,6 +25,6 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts","**/*.test.ts",
-    "**/*.test.tsx"],
+    "**/*.test.tsx", "src/components/BudgetList.js"],
   "exclude": ["node_modules"]
 }

@@ -2,16 +2,7 @@ import { Account, User } from "../models/index.js";
 import { accountSchema, updateAccountSchema} from "../schemas/account.js"
 
 
-export async function createAccount(req, res) {
-  const { title, user_id } = accountSchema.parse(req.body);
-  console.log(req.body)
-  const user = await User.findByPk(user_id);
-  if (! user) {
-    return res.status(404).json({ error: "User not found. Please verify the provided 'user_id' property." });
-  }
-  const createdAccount = await Account.create({ title, user_id });
-  res.status(201).json(createdAccount);
-}
+c
 
 
 

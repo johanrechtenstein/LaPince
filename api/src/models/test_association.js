@@ -1,4 +1,4 @@
-import { User, Account, Budget, Detail_account, Detail_budget, Tag } from "./associations.js";
+import { User, Account, Budget, Detail_account, Detail_budget } from "./associations.js";
 import { sequelize } from "./dbClientSequelize.js";
 import "dotenv/config";
 
@@ -23,9 +23,7 @@ const detail_budget = await Detail_budget.findOne({ include: "tag"});
 console.log(detail_budget.toJSON());
 
 
-// == Tag ==
-const tag = await Tag.findOne({ include: ["detail_account","detail_budget"] });
-console.log(tag.toJSON());
+
 
 // == Fermer le tunnel de connexion Sequelize pour que le script nous rende automatiquement la main
 await sequelize.close();

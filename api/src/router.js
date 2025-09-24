@@ -4,7 +4,6 @@ import * as accountController from "./controllers/accountController.js";
 import * as budgetController from "./controllers/budgetController.js";
 import * as detailBudgetController from "./controllers/detailBudgetController.js"
 import * as detailAccountController from "./controllers/detailAccountController.js"
-import * as tagController from "./controllers/tagController.js";
 import * as authController from "./controllers/authController.js";
 
 
@@ -69,24 +68,21 @@ router.delete("/detailbudget/:id", detailBudgetController.deleteDetailBudget);
 router.get("/user/:userId/budget/:budgetId/detailbudget", detailBudgetController.getAllDetailBudgetOfMember)
 
 
-
-// == Routes des tags ==
-router.get("/tag", tagController.getAllTag);
-router.get("/tag/:id", tagController.getOneTag);
-router.post("/tag", tagController.createTag);
-router.put("/tag/:id", tagController.updateTag);
-router.delete("/tag/:id", tagController.deleteTag);
-
-// router.put("/user/:userId/budget/:budgetId/detailbudget/:detailbudgetId/tag/:tagId", tagController.assignTagToBudget);
-// router.delete("/user/:userId/budget/:budgetId/detailbudget/:detailbudgetId/tag/:tagId", tagController.removeTagFromBudget);
-// router.put("/user/:userId/account/:budgetId/detailAccount/:detailaccountId/tag/:tagId", tagController.assignTagToAccount);
-// router.delete("/user/:userId/account/:budgetId/detailAccount/:detailaccountId/tag/:tagId", tagController.removeTagFromAccount);
-
-
 // Middleware 404
 router.use((req, res) => {
   res.status(404).json({ error: "Not Found" });
 });
 
 
+// == Routes des tags ==
+// router.get("/tag", tagController.getAllTag);
+// router.get("/tag/:id", tagController.getOneTag);
+// router.post("/tag", tagController.createTag);
+// router.put("/tag/:id", tagController.updateTag);
+// router.delete("/tag/:id", tagController.deleteTag);
+
+// router.put("/user/:userId/budget/:budgetId/detailbudget/:detailbudgetId/tag/:tagId", tagController.assignTagToBudget);
+// router.delete("/user/:userId/budget/:budgetId/detailbudget/:detailbudgetId/tag/:tagId", tagController.removeTagFromBudget);
+// router.put("/user/:userId/account/:budgetId/detailAccount/:detailaccountId/tag/:tagId", tagController.assignTagToAccount);
+// router.delete("/user/:userId/account/:budgetId/detailAccount/:detailaccountId/tag/:tagId", tagController.removeTagFromAccount);
 

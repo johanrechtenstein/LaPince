@@ -3,7 +3,7 @@ import { Account } from "./account.js";
 import { Budget } from "./budget.js";
 import { Detail_account } from "./detail_account.js";
 import { Detail_budget } from "./detail_budget.js"
-import { Tag } from "./tag.js";
+
 
 
 // user <-> account (One-to-Many)
@@ -26,15 +26,7 @@ Detail_account.belongsTo(Account,{
     as: "account"
   });
 
-// detail_account <-> tag (One-to-Many)
-Detail_account.hasMany(Tag, {
-  foreignKey: "detail_account_id",
-  as: "tag"
-});
-Tag.belongsTo(Detail_account,{
-  foreignKey: "detail_account_id",
-  as: "detail_account"
-});
+
 
 
 // user <-> budget (One-to-Many)
@@ -57,15 +49,7 @@ Detail_budget.belongsTo(Budget,{
   as: "budget"
 });
 
-// detail_budget <-> tag (One-to-Many)
-Detail_budget.hasMany(Tag, {
-foreignKey: "detail_budget_id",
-as: "tag"
-});
-Tag.belongsTo(Detail_budget,{
-foreignKey: "detail_budget_id",
-as: "detail_budget"
-});
+
 
 // account <-> budget (One-to-Many)
 Account.hasMany(Budget, {
@@ -77,4 +61,4 @@ Budget.belongsTo(Account,{
   as: "account"
 });
 
-export { User, Account, Detail_account, Budget, Detail_budget, Tag };
+export { User, Account, Detail_account, Budget, Detail_budget };
