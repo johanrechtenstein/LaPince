@@ -2,7 +2,6 @@ import { Account, User } from "../models/index.js";
 import { accountSchema, updateAccountSchema} from "../schemas/account.js"
 
 
-c
 
 
 
