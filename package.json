@@ -24,6 +24,7 @@
   "homepage": "https://github.com/O-clock-Tiramisu/LaPince#readme",
   "description": "",
   "devDependencies": {
-    "@biomejs/biome": "2.1.2"
+    "@biomejs/biome": "2.1.2",
+    "tailwindcss": "^4.1.13"
   }
 }

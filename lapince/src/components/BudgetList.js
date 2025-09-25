@@ -3,25 +3,10 @@
 import React from 'react';
 import Link from 'next/link';
 
-// 1. Définir le type pour un seul budget
-interface Budget {
-  id: string; // Utiliser string si l'ID est un UUID ou un ObjectId
-  title: string;
-  limit: string; // Utiliser string si la valeur est traitée en tant que texte
-}
-
-// 2. Définir le type pour les props du composant
-interface BudgetListProps {
-  budgets: Budget[];
-  isLoading: boolean;
-  openEditBModal: (budget: Budget) => void;
-  deleteBudget: (budgetId: string, accountId: string) => void;
-  deletingId: string | null;
-  accountId: string;
-}
 
 
-const BudgetList:React.FC<BudgetListProps> = ({
+
+const BudgetList = ({
   budgets,
   isLoading,
   openEditBModal,
