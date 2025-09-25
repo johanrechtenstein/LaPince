@@ -44,18 +44,6 @@ BEGIN;
         (4,1000,'nouvelle machine','2025-07',4)
         ;
 
-    INSERT INTO "tag"
-        ("id","title","detail_account_id","detail_budget_id")
-    VALUES
-        (1,'salaire',1,NULL),
-        (2,'nourriture',NULL,1),
-        (3,'salaire',2,NULL),
-        (4,'salaire',3,NULL),
-        (5,'mme michu',4,NULL),
-        (6,'vêtement',NULL,2),
-        (7,'loisir',NULL,3),
-        (8,'investissement',NULL,4)
-        ;
 
 COMMIT;
 

@@ -74,15 +74,4 @@ router.use((req, res) => {
 });
 
 
-// == Routes des tags ==
-// router.get("/tag", tagController.getAllTag);
-// router.get("/tag/:id", tagController.getOneTag);
-// router.post("/tag", tagController.createTag);
-// router.put("/tag/:id", tagController.updateTag);
-// router.delete("/tag/:id", tagController.deleteTag);
-
-// router.put("/user/:userId/budget/:budgetId/detailbudget/:detailbudgetId/tag/:tagId", tagController.assignTagToBudget);
-// router.delete("/user/:userId/budget/:budgetId/detailbudget/:detailbudgetId/tag/:tagId", tagController.removeTagFromBudget);
-// router.put("/user/:userId/account/:budgetId/detailAccount/:detailaccountId/tag/:tagId", tagController.assignTagToAccount);
-// router.delete("/user/:userId/account/:budgetId/detailAccount/:detailaccountId/tag/:tagId", tagController.removeTagFromAccount);
 
