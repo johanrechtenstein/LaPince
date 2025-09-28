@@ -1,7 +1,7 @@
-import sanitizeHtml from "sanitize-html"
-import { User} from "../models/index.js"
-import bcrypt from 'bcrypt';
 import { userSchema, updateUserSchema } from "../schemas/user.js";
+import { User} from "../models/index.js";
+import bcrypt from 'bcrypt';
+import sanitizeHtml from "sanitize-html";
 
 
 export async function getAllUser(req,res){

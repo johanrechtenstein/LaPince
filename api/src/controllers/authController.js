@@ -52,7 +52,7 @@ export const login = async (req, res) => {
             httpOnly: true,
             secure: isProduction, // true en production (HTTPS), false en dev
             sameSite: isProduction ? 'none' : 'strict', // 'none' pour cross-origin en prod
-            maxAge: 24 * 60 * 60 * 1000 // 24 heures
+            maxAge: 60 * 60 * 1000 //  1 heures
         };
 
         console.log('🍪 Configuration cookie:', cookieOptions);
