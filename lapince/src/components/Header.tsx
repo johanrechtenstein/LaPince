@@ -18,7 +18,7 @@ export default function Header() {
     if (isOpen) {
       timer = setTimeout(() => {
         setIsOpen(false);
-      }, 10000); // 10 secondes
+      }, 5000); // 5 secondes
     }
 
     // Nettoie le minuteur si le composant est démonté ou si la valeur d'isOpen change
@@ -52,24 +52,24 @@ export default function Header() {
         </button>
         <div id="menu" className={`${isOpen ? 'flex' : 'hidden'} flex-col space-y-4 md:flex md:flex-row md:gap-2`}>
           <Link href="/" onClick={closeMenu}>
-            <div className="bg-blue-700 p-2 rounded-full text-white transition delay-150 duration-300 ease-in-out -translate-y-1 hover:scale-110 hover:bg-red-500 text-center">
+            <div className="bg-blue-700 p-2 rounded-full text-white transition delay-150 duration-300 ease-in-out -translate-y-1 hover:scale-110 hover:bg-blue-900 text-center">
               Accueil
             </div>
           </Link>
           <Link href="/contact" onClick={closeMenu}>
-            <div className="bg-blue-700 p-2 rounded-full text-white transition delay-150 duration-300 ease-in-out -translate-y-1 hover:scale-110 hover:bg-red-500 text-center">
+            <div className="bg-blue-700 p-2 rounded-full text-white transition delay-150 duration-300 ease-in-out -translate-y-1 hover:scale-110 hover:bg-blue-900 text-center">
               Contact
             </div>
           </Link>
           {!user ? (
             <>
               <Link href="/connexion" onClick={closeMenu}>
-                <div className="bg-blue-700 p-2 rounded-full text-white transition delay-150 duration-300 ease-in-out -translate-y-1 hover:scale-110 hover:bg-red-500 text-center">
+                <div className="bg-blue-700 p-2 rounded-full text-white transition delay-150 duration-300 ease-in-out -translate-y-1 hover:scale-110 hover:bg-green-500 text-center">
                   Connexion
                 </div>
               </Link>
               <Link href="/inscription" onClick={closeMenu}>
-                <div className="bg-blue-700 p-2 rounded-full text-white transition delay-150 duration-300 ease-in-out -translate-y-1 hover:scale-110 hover:bg-red-500 text-center">
+                <div className="bg-blue-700 p-2 rounded-full text-white transition delay-150 duration-300 ease-in-out -translate-y-1 hover:scale-110 hover:bg-blue-900 text-center">
                   Inscription
                 </div>
               </Link>
@@ -77,12 +77,12 @@ export default function Header() {
           ) : (
             <>
               <Link href="/userPage" onClick={closeMenu}>
-                <div className="bg-blue-700 p-2 w-30 rounded-full text-white transition delay-150 duration-300 ease-in-out -translate-y-1 hover:scale-110 hover:bg-red-500 text-center">
+                <div className="bg-blue-700 p-2 w-30 rounded-full text-white transition delay-150 duration-300 ease-in-out -translate-y-1 hover:scale-110 hover:bg-blue-900 text-center">
                   Mes comptes
                 </div>
               </Link>
               <Link href="/profil" onClick={closeMenu}>
-                <div className="bg-blue-700 p-2 md:w-20 rounded-full text-white transition delay-150 duration-300 ease-in-out -translate-y-1 hover:scale-110 hover:bg-red-500 text-center">
+                <div className="bg-blue-700 p-2 md:w-20 rounded-full text-white transition delay-150 duration-300 ease-in-out -translate-y-1 hover:scale-110 hover:bg-blue-900 text-center">
                   Profil
                 </div>
               </Link>
