@@ -82,7 +82,7 @@ export default function Login() {
           />
         </div  >
         <div className='flex justify-center py-9'>
-        <button type="submit" disabled={isLoading}><div className="bg-blue-700 p-4 rounded-full text-white transition delay-150 duration-300 ease-in-out -translate-y-1 hover:scale-110 hover:bg-red-500 text-center cursor-none md:cursor-auto">Se connecter</div></button>
+        <button type="submit" disabled={isLoading}><div className="bg-blue-700 p-4 rounded-full text-white transition delay-150 duration-300 ease-in-out -translate-y-1 hover:scale-110 hover:bg-green-500 text-center cursor-none md:cursor-auto">Se connecter</div></button>
         </div>
       </form>
     </div>
