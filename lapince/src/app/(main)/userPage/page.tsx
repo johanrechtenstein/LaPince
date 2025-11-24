@@ -351,7 +351,7 @@ export default function UserPage() {
                       
                         <div className="justify-self-end">
                          {/* Bouton supprimer compte */}
-                         <button 
+                         <button type="button"
                           onClick={() => deleteAccount(String(account.id))}
                           disabled={!!deletingId} 
                           className="bg-blue-700 py-1 px-2 m-2 rounded-xs text-white transition delay-150 duration-300 ease-in-out hover:scale-110 hover:bg-red-600 text-center disabled:opacity-50"
@@ -371,7 +371,7 @@ export default function UserPage() {
                         </Link>
 
                         {/* Bouton modifier compte */}
-                        <button onClick={() => openEditAModal(account)}
+                        <button type="button" onClick={() => openEditAModal(account)}
                           className="bg-blue-700 p-2 m-2 rounded-lg text-white transition delay-150 duration-300 ease-in-out hover:scale-110 hover:bg-blue-600 text-center"
                         >
                           Modifier
